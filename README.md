@@ -45,3 +45,7 @@ func main() {
 	prtty.Error.Fatal("ERROR: something went wrong :(")
 }
 ```
+
+Depending on your terminal color settings, the above program would produce output like this:
+
+![example output](http://oi58.tinypic.com/anfu5d.jpg)

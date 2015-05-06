@@ -49,3 +49,7 @@ func main() {
 Depending on your terminal color settings, the above program would produce output like this:
 
 ![example output](http://oi58.tinypic.com/anfu5d.jpg)
+
+### License
+
+prtty is licensed under the MIT License. See the LICENSE file for more information.

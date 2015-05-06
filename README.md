@@ -23,7 +23,7 @@ The [Logger](http://godoc.org/github.com/albrow/prtty#Logger) type has most of t
 
 prtty respects the flags set with [log.SetFlags](http://golang.org/pkg/log/#SetFlags).
 
-### Basic Usage
+### Usage
 
 ``` go
 package main

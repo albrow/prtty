@@ -2,6 +2,7 @@
 // Use of this source code is governed by the MIT
 // license, which can be found in the LICENSE file.
 
+// package prtty is a small go library for logging things with color.
 package prtty
 
 import (

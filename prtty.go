@@ -16,19 +16,22 @@ import (
 const (
 	// Color settings for the different logging functions
 	// See: https://godoc.org/github.com/wsxiaoys/terminal/color
-	defaultColor = "@w" // white
-	infoColor    = "@c" // cyan
-	warnColor    = "@y" // yellow
-	successColor = "@g" // green
-	errorColor   = "@r" // red
+	ColorRed     = "@r"
+	ColorGreen   = "@g"
+	ColorBlue    = "@b"
+	ColorCyan    = "@c"
+	ColorMagenta = "@m"
+	ColorYellow  = "@y"
+	ColorBlack   = "@k"
+	ColorWhite   = "@w"
 )
 
 var (
-	Default        = NewLogger(os.Stdout, defaultColor)
-	Info           = NewLogger(os.Stdout, infoColor)
-	Warn           = NewLogger(os.Stdout, warnColor)
-	Success        = NewLogger(os.Stdout, successColor)
-	Error          = NewLogger(os.Stderr, errorColor)
+	Default        = NewLogger(os.Stdout, ColorWhite)
+	Info           = NewLogger(os.Stdout, ColorCyan)
+	Warn           = NewLogger(os.Stdout, ColorYellow)
+	Success        = NewLogger(os.Stdout, ColorGreen)
+	Error          = NewLogger(os.Stderr, ColorRed)
 	DefaultLoggers LoggerGroup
 	AllLoggers     LoggerGroup
 )

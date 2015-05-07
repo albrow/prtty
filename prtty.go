@@ -24,11 +24,13 @@ const (
 )
 
 var (
-	Default = NewLogger(os.Stdout, defaultColor)
-	Info    = NewLogger(os.Stdout, infoColor)
-	Warn    = NewLogger(os.Stdout, warnColor)
-	Success = NewLogger(os.Stdout, successColor)
-	Error   = NewLogger(os.Stderr, errorColor)
+	Default        = NewLogger(os.Stdout, defaultColor)
+	Info           = NewLogger(os.Stdout, infoColor)
+	Warn           = NewLogger(os.Stdout, warnColor)
+	Success        = NewLogger(os.Stdout, successColor)
+	Error          = NewLogger(os.Stderr, errorColor)
+	DefaultLoggers LoggerGroup
+	AllLoggers     LoggerGroup
 )
 
 type Logger struct {
@@ -36,10 +38,31 @@ type Logger struct {
 	Color  string
 }
 
+type LoggerGroup []*Logger
+
+func init() {
+	DefaultLoggers = LoggerGroup{Default, Info, Warn, Success, Error}
+	AllLoggers = append(LoggerGroup{}, DefaultLoggers...)
+}
+
 func NewLogger(out io.Writer, color string) *Logger {
-	return &Logger{
+	logger := &Logger{
 		Output: out,
 		Color:  color,
+	}
+	AllLoggers = append(AllLoggers, logger)
+	return logger
+}
+
+func (lg LoggerGroup) SetOutput(out io.Writer) {
+	for _, logger := range lg {
+		logger.Output = out
+	}
+}
+
+func (lg LoggerGroup) SetColor(color string) {
+	for _, logger := range lg {
+		logger.Color = color
 	}
 }
 
